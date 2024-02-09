@@ -2,6 +2,10 @@ pScore = 0;
 cScore = 0;
 turn = 1;
 
+// returns a selected choice for the computer
+// based on a random number between 1 and 3
+// 1=rock,2=paper,3=scissors
+// 
 function getComputerChoice() {
     r = Math.floor(Math.random()*3) + 1;
     if (r===1) {
@@ -13,6 +17,13 @@ function getComputerChoice() {
     }
 }
 
+
+// plays a single round of Rock, Paper Scissors
+//
+// @param playerSelection and computerSelection
+// compare the two values to determine who wins the round
+// Rock beats scissors, scissors beat paper, and paper beats rock
+//
 function playRound(playerSelection, computerSelection) {
     ps = playerSelection.toLowerCase();
     cs = computerSelection.toLowerCase();
