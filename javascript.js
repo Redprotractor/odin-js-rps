@@ -53,9 +53,10 @@ function playGame() {
         comp = getComputerChoice();
         playRound(player,comp);
         turn++;
+        console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
     }
-
-    return `Score: \nPlayer ${pScore}\nComputer ${cScore}`;
+    
+    console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
     if (pScore > cScore) {
         return "You win!";
     } else {
