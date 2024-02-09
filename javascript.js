@@ -11,28 +11,31 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection===computerSelection) {
+    ps = playerSelection.toLowerCase();
+    cs = computerSelection.toLowerCase();
+    if (ps===cs) {
         return "Draw.";
     } 
-    if (playerSelection==="Rock") {
-        if (computerSelection==="Paper") {
+    if (ps==="rock") {
+        if (cs==="paper") {
             return "Computer wins!";
-        } else if (computerSelection==="Scissors") {
+        } else if (cs==="scissors") {
             return "Player wins!";
         }
-    } else if (playerSelection==="Paper") {
-        if (computerSelection==="Scissors") {
+    } else if (ps==="paper") {
+        if (cs==="scissors") {
             return "Computer wins!";
-        } else if (computerSelection==="Rock") {
+        } else if (cs==="rock") {
             return "Player wins!";
         }
-    } else if (playerSelection==="Scissors") {
-        if (computerSelection==="Rock") {
+    } else if (ps==="scissors") {
+        if (cs==="rock") {
             return "Computer wins!";
-        } else if (computerSelection==="Paper") {
+        } else if (cs==="paper") {
             return "Player wins!";
         }
     }
 }
 
-console.log(getComputerChoice())
+const playerChoice = "Rock";
+console.log(playRound(playerChoice,getComputerChoice()))
