@@ -48,15 +48,15 @@ function playRound(playerSelection, computerSelection) {
 
 function playGame() {
 
-    while (turn < 6) {
+    while (turn != 6) {
+        console.log(`Turn: ${turn}`);
         let player = prompt("Enter a selection (rock, paper, scissors):");
         comp = getComputerChoice();
-        playRound(player,comp);
-        console.log(`Turn: ${turn} \nScore: \nPlayer ${pScore}\nComputer ${cScore}`);
+        console.log(playRound(player,comp));
+        console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
         turn++;
     }
     
-    console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
     if (pScore > cScore) {
         return "You win!";
     } else {
