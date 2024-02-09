@@ -52,8 +52,8 @@ function playGame() {
         let player = prompt("Enter a selection (rock, paper, scissors):");
         comp = getComputerChoice();
         playRound(player,comp);
+        console.log(`Turn: ${turn} \nScore: \nPlayer ${pScore}\nComputer ${cScore}`);
         turn++;
-        console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
     }
     
     console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
