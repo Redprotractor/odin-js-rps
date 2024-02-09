@@ -1,8 +1,12 @@
 # odin-js-rps
 The Odin Project - JavaScript - Rock, Paper, Scissors 
 
-We’re going to make an implementation of grade-school classic “rock paper scissors”. 
-If you don’t know what that is check the Wikipedia article or this detailed step-by-step. 
-For the moment we’re just going to play the game from the browser console, but we will revisit this project in a later lesson and add a Graphical User Interface with buttons and text, so don’t forget to keep the code on GitHub! 
-You might notice some ‘Live Preview’ links in the student solutions that have a GUI - this is coming in a later lesson. 
-When you get there don’t forget to come back and add your link!
+Implementation of the classic game Rock, Paper, Scissors
+
+Create a function for getComputerChoice that returns a random selection of one of the three options. 
+
+Create a function playRound that takes the playerSelection and computerSelection as parameters to play a single round. 
+
+Create a function playGame to play five rounds of the game and display a winner at the end. 
+
+Accept the user's selection from a prompt
