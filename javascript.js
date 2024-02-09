@@ -57,8 +57,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Plays 5 rounds of rock, paper, scissors
+// At the end of each turn, displays the player score
+// After 5 turns, compare the scores
+// @return message saying whether player wins or loses
 function playGame() {
-
     while (turn != 6) {
         console.log(`Turn: ${turn}`);
         let player = prompt("Enter a selection (rock, paper, scissors):");
