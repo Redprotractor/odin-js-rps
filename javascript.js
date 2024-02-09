@@ -18,21 +18,21 @@ function playRound(playerSelection, computerSelection) {
     } 
     if (ps==="rock") {
         if (cs==="paper") {
-            return "Computer wins!";
+            return "Paper beats rock. Computer wins!";
         } else if (cs==="scissors") {
-            return "Player wins!";
+            return "Rock beats scissors. Player wins!";
         }
     } else if (ps==="paper") {
         if (cs==="scissors") {
-            return "Computer wins!";
+            return "Scissors beat rock. Computer wins!";
         } else if (cs==="rock") {
-            return "Player wins!";
+            return "Paper beats rock. Player wins!";
         }
     } else if (ps==="scissors") {
         if (cs==="rock") {
-            return "Computer wins!";
+            return "Rock beats scissors. Computer wins!";
         } else if (cs==="paper") {
-            return "Player wins!";
+            return "Scissors beat paper. Player wins!";
         }
     }
 }
