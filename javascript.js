@@ -61,20 +61,51 @@ function playRound(playerSelection, computerSelection) {
 // At the end of each turn, displays the player score
 // After 5 turns, compare the scores
 // @return message saying whether player wins or loses
-function playGame() {
-    while (turn != 6) {
-        console.log(`Turn: ${turn}`);
-        let player = prompt("Enter a selection (rock, paper, scissors):");
-        comp = getComputerChoice();
-        console.log(playRound(player,comp));
-        console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
-        turn++;
-    }
+function playGame(input) {
     
+    comp = getComputerChoice();
+    console.log(playRound(input, comp));
+    console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
+        
     if (pScore > cScore) {
         return "You win!";
     } else {
         return "You lose!";
     }
 }
-console.log(playGame())
+
+const rps = document.createElement("h1");
+rps.textContent = "Rock, Paper, Scissors!";
+const container = document.createElement("div");
+const player1 = document.createElement("p");
+const player2 = document.createElement("p");
+player1.textContent = "Player 1 score: " + pScore;
+player2.textContent = "Player 2 score: " + cScore;
+container.appendChild(player1);
+container.appendChild(player2);
+document.body.appendChild(rps);
+document.body.appendChild(container);
+
+const rock = document.createElement("button");
+const paper = document.createElement("button");
+const scissors = document.createElement("button");
+
+rock.textContent = "Rock";
+rock.addEventListener("click", () => {
+    playGame("rock");
+});
+
+paper.textContent = "Paper";
+paper.addEventListener("click", () => {
+    playGame("paper");
+});
+
+scissors.textContent = "Scissors";
+paper.addEventListener("click", () => {
+    playGame("scissors");
+});
+
+container.appendChild(rock);
+container.appendChild(paper);
+container.appendChild(scissors);
+
