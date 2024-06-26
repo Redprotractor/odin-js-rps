@@ -2,6 +2,20 @@ pScore = 0;
 cScore = 0;
 turn = 1;
 
+const rps = document.createElement("h1");
+rps.textContent = "Rock, Paper, Scissors!";
+const container = document.createElement("div");
+const player1 = document.createElement("p");
+const player2 = document.createElement("p");
+player1.textContent = "Player 1 score: " + pScore;
+player2.textContent = "Player 2 score: " + cScore;
+container.appendChild(player1);
+container.appendChild(player2);
+document.body.appendChild(rps);
+document.body.appendChild(container);
+
+
+
 // returns a selected choice for the computer
 // based on a random number between 1 and 3
 // 1=rock,2=paper,3=scissors
@@ -33,6 +47,7 @@ function playRound(playerSelection, computerSelection) {
     if (ps==="rock") {
         if (cs==="paper") {
             cScore++;
+            
             return "Paper beats rock. Computer wins!";
         } else if (cs==="scissors") {
             pScore++;
@@ -64,31 +79,23 @@ function playRound(playerSelection, computerSelection) {
 function playGame(input) {
     
     comp = getComputerChoice();
-    console.log(playRound(input, comp));
-    console.log(`Score: \nPlayer ${pScore}\nComputer ${cScore}`);
-        
-    if (pScore > cScore) {
-        return "You win!";
-    } else {
-        return "You lose!";
+    playRound(input, comp);
+    turn++;
+    if (turn === 6) {
+        if (pScore > cScore) {
+            return "You win!";
+        } else {
+            return "You lose!";
+        }
     }
 }
 
-const rps = document.createElement("h1");
-rps.textContent = "Rock, Paper, Scissors!";
-const container = document.createElement("div");
-const player1 = document.createElement("p");
-const player2 = document.createElement("p");
-player1.textContent = "Player 1 score: " + pScore;
-player2.textContent = "Player 2 score: " + cScore;
-container.appendChild(player1);
-container.appendChild(player2);
-document.body.appendChild(rps);
-document.body.appendChild(container);
+
 
 const rock = document.createElement("button");
 const paper = document.createElement("button");
 const scissors = document.createElement("button");
+const results = document.createElement("p");
 
 rock.textContent = "Rock";
 rock.addEventListener("click", () => {
