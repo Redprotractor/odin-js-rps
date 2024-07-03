@@ -1,6 +1,7 @@
 pScore = 0;
 cScore = 0;
-turn = 1;
+turn = 0;
+
 
 const rps = document.createElement("h1");
 rps.textContent = "Rock, Paper, Scissors!";
@@ -11,6 +12,16 @@ player1.textContent = "Player 1 score: " + pScore;
 player2.textContent = "Player 2 score: " + cScore;
 container.appendChild(player1);
 container.appendChild(player2);
+
+const results = document.createElement("div");
+results.classList.add("results");
+const thisTurn = document.createElement("p");
+thisTurn.classList.add("thisTurn");
+const turnResults = document.createElement("p");
+turnResults.classList.add("turnResults");
+results.appendChild(thisTurn);
+results.appendChild(turnResults);
+
 document.body.appendChild(rps);
 document.body.appendChild(container);
 
@@ -21,12 +32,12 @@ document.body.appendChild(container);
 // 1=rock,2=paper,3=scissors
 // 
 function getComputerChoice() {
-    r = Math.floor(Math.random()*3) + 1;
-    if (r===1) {
+    r = Math.floor(Math.random()*3);
+    if (r===0) {
         return "Rock";
-    } else if (r===2) {
+    } else if (r===1) {
         return "Paper";
-    } else if (r===3) {
+    } else if (r===2) {
         return "Scissors";
     }
 }
@@ -41,78 +52,102 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     ps = playerSelection.toLowerCase();
     cs = computerSelection.toLowerCase();
+    console.log(ps);
+    console.log(cs);
     if (ps===cs) {
-        return "Draw.";
-    } 
-    if (ps==="rock") {
-        if (cs==="paper") {
-            cScore++;
-            
-            return "Paper beats rock. Computer wins!";
-        } else if (cs==="scissors") {
-            pScore++;
-            return "Rock beats scissors. Player wins!";
-        }
-    } else if (ps==="paper") {
-        if (cs==="scissors") {
-            cScore++;
-            return "Scissors beat rock. Computer wins!";
-        } else if (cs==="rock") {
-            pScore++;
-            return "Paper beats rock. Player wins!";
-        }
-    } else if (ps==="scissors") {
-        if (cs==="rock") {
-            cScore++;
-            return "Rock beats scissors. Computer wins!";
-        } else if (cs==="paper") {
-            pScore++;
-            return "Scissors beat paper. Player wins!";
+        turnResults.textContent = "Draw.";
+    } else {
+        if (ps==="rock") {
+            if (cs==="paper") {
+                cScore++;
+                turnResults.textContent = "Paper beats rock. Computer wins!";
+            } else if (cs==="scissors") {
+                pScore++;
+                turnResults.textContent = "Rock beats scissors. Player wins!";
+            }
+        } else if (ps==="paper") {
+            if (cs==="scissors") {
+                cScore++;
+                turnResults.textContent = "Scissors beat rock. Computer wins!";
+            } else if (cs==="rock") {
+                pScore++;
+                turnResults.textContent = "Paper beats rock. Player wins!";
+            } 
+        } else if (ps==="scissors") {
+            if (cs==="rock") {
+                cScore++;
+                turnResults.textContent = "Rock beats scissors. Computer wins!";
+            } else if (cs==="paper") {
+                pScore++;
+                turnResults.textContent = "Scissors beat paper. Player wins!";
+            } 
         }
     }
 }
 
-// Plays 5 rounds of rock, paper, scissors
-// At the end of each turn, displays the player score
-// After 5 turns, compare the scores
-// @return message saying whether player wins or loses
-function playGame(input) {
-    
-    comp = getComputerChoice();
-    playRound(input, comp);
+
+function updateScore() {
+    player1.textContent = "Player 1 score: " + pScore;
+    player2.textContent = "Player 2 score: " + cScore;
+}
+
+function updateTurn() {
     turn++;
-    if (turn === 6) {
-        if (pScore > cScore) {
-            return "You win!";
-        } else {
-            return "You lose!";
-        }
-    }
+    thisTurn.textContent = "Turn number: " + turn;
 }
 
-
+function displayWinner() {
+    if (pScore > cScore) {
+        winner.textContent = "You win!";
+    } else {
+        winner.textContent = "Computer wins!";
+    }
+}
 
 const rock = document.createElement("button");
 const paper = document.createElement("button");
 const scissors = document.createElement("button");
-const results = document.createElement("p");
+
 
 rock.textContent = "Rock";
 rock.addEventListener("click", () => {
-    playGame("rock");
+    playRound("rock", getComputerChoice());
+    updateScore();
+    updateTurn();
+    if (turn === 5) {
+        displayWinner();
+    }
 });
 
 paper.textContent = "Paper";
 paper.addEventListener("click", () => {
-    playGame("paper");
+    playRound("paper", getComputerChoice());
+    updateScore();
+    updateTurn();
+    if (turn === 5) {
+        displayWinner();
+    }
 });
 
 scissors.textContent = "Scissors";
-paper.addEventListener("click", () => {
-    playGame("scissors");
+scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+    updateScore();
+    updateTurn();
+    if (turn === 5) {
+        displayWinner();
+    }
 });
 
 container.appendChild(rock);
 container.appendChild(paper);
 container.appendChild(scissors);
+
+document.body.appendChild(results);
+
+const winner = document.createElement("p");
+results.appendChild(winner);
+
+
+
 
